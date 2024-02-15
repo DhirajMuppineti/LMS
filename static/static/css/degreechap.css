@@ -1,0 +1,109 @@
+*{
+    margin:0px;
+    padding:0px;
+    color: white;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    background-color: #1a1a1a;
+    width: 100%;
+    height: 100%;
+}
+.navbar{
+    border-bottom: 1px solid rgba(255, 255, 255, 0.535);
+    background-color: #1a1a1a;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    height: 18.01vh;
+    width: 100vw;
+    z-index: 1;
+}
+.navbar .top{
+    display: flex;
+    padding: 16.5px 48px;
+    flex-direction: row;
+    align-items: center;
+}
+.navbar .top .con{
+    margin: 0 10px;
+}
+.navbar .top #logo{
+    height: 32px;
+    width: 200px;
+    border: 1px solid #1a1a1a;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.navbar .top input{
+    width: 280px;
+    height: 30px;
+    border-style: none;
+    font-size:medium;
+    outline: none;
+    background: none;
+    border: 1px solid white;
+    color: white;
+    border-radius: 50px;
+    padding: 6px 20px;
+}
+.navbar .top input::placeholder{
+    color: rgba(255, 255, 255, 0.535);
+}
+
+.navbar #nav{
+    display: flex;
+    padding: 0 48px;
+    border-radius: 40px;
+    gap: 20px;
+}
+
+.navbar #nav a {
+    padding: 10px 12px;
+    color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 2px solid #1a1a1a;
+    text-decoration: none;
+    transition: all 0.5s ease-in, border 300ms ease-in-out;
+}
+
+.navbar #nav a:hover{
+    border-bottom: 2px solid white;
+    background-color: #2a2a2a;
+}
+.navbar #nav .active{
+    border-bottom: 2px solid white;
+    background-color: #2a2a2a;
+}
+
+#chaplist{
+    margin-top: 120px;
+    padding: 30px 48px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#chaplist h1{
+    margin: 10px;
+}
+
+#chaplist a {
+    width: 500px;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid  none;
+    padding: 15px;
+    margin: 5px 0px;
+    background-color: #2a2a2a;
+    transition: all 80ms ease-in-out 0s;
+}
+
+#chaplist a:hover {
+    transform: scale(1.03) translateX(-1px);
+    box-shadow: 1px 25px 45px rgba(0, 0, 0, 0.846);
+}

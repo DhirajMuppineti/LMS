@@ -1,0 +1,13 @@
+<!-- chapter_list.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Chapters for {{ course.name }}</h1>
+
+<ul>
+    {% for chapter in chapters %}
+    <li><a href="{% url 'edit_chapter' course.id chapter.id %}">{{ chapter.title }}</a></li>
+    {% endfor %}
+    <a href="{% url 'create_chapter' course.id %}">Create Chapter</a>
+</ul>
+{% endblock %}

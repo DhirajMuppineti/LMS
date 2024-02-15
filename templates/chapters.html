@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<head>
+    <link rel="stylesheet" href="../../static/css/degreechap.css">
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            background-color: #ffffff;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<h1>{{ chapter.title }}</h1>
+<div>{{ chapter.content|safe}}</div>
+<!-- Add other chapter details as needed -->
+{% endblock content %}

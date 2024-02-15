@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<head>
+    <link rel="stylesheet" href="../static/css/index.css">
+</head>
+<div class="grey"></div>
+
+<div class="content">
+    <div class="course">
+        <h1>Select your course</h1>
+        <div class="inc">
+            {% for course in courses %}
+            <a href="{% url 'course_detail' course.id %}" class="cont">
+                <div class="img"><img src="{{ course.image.url }}" alt=""></div>
+                <span class="text">{{ course.name }}</span>
+                <br>
+                <span class="text">{{ course.description }}</span>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

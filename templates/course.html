@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<head>
+    <link rel="stylesheet" href="../../static/css/degreechap.css">
+</head>
+
+
+
+<ul id="chaplist">
+    <div class="course_desc">
+        <h1>{{ course.name }}</h1>
+        <p>{{course.description}}</p>
+    </div>
+    {% for chapter in chapters %}
+        <a href="{% url 'chapter_detail' course.id chapter.id %}">{{ chapter.title }}</a>
+    {% endfor %}
+</ul>
+
+{% endblock content %}
