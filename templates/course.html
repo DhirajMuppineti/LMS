@@ -5,13 +5,9 @@
     <link rel="stylesheet" href="../../static/css/degreechap.css">
 </head>
 
-
-
-<ul id="chaplist">
-    <div class="course_desc">
-        <h1>{{ course.name }}</h1>
-        <p>{{course.description}}</p>
-    </div>
+<ul class="chaplist">
+    <h1>{{ course.name }}</h1>
+    <h2>{{course.description}}</h2>
     {% for chapter in chapters %}
         <a href="{% url 'chapter_detail' course.id chapter.id %}">{{ chapter.title }}</a>
     {% endfor %}

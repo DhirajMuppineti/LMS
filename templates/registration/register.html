@@ -1,31 +1,30 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+{% block content %}
+<!-- <form action="E:\PROJECTS\DC_Proj\index.html" class="form" action="">
+    <h1>Login page</h1>
+    <input type="text" placeholder="username" id="username">
+    <input type="password" name=""placeholder="password" id="password">
+    <a href="index.html">Submit</a>
+</form> -->
+<head>
+    <link rel="stylesheet" href="../../static/css/login.css">
+</head>
 <section>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 col-centered">
-                <h1 class="mt-5 mb-3">Register</h1>
-            </div>
+    <form class = "form" method="post" action="{% url 'register' %}">
+        <h1>Register</h1>
+        {% csrf_token %}
+        {% for field in form %}
+        <div >
+            <!-- {{ field.label_tag }} -->
+            <input type="{% if 'password' in field.label_tag %}password{% else %}text{% endif %}" placeholder = "{% if 'password' in field.label_tag %}Password{% else %}Username{% endif %}" name="{{ field.html_name }}" maxlength="{% if 'username' in field.label_tag %}150{% endif %}" id="{{ field.id_for_label }}" required />
         </div>
-        <div class="row">
-            <div class="col-md-6 offset-md-3 mt-3">
-                <form method="post" action="{% url 'register' %}">
-                    {% csrf_token %} {% for field in form %}
-                    <div class="form-group">
-                        {{ field.label_tag }}
-                        <input type="{% if 'password' in field.label_tag %}password{% else %}text{% endif %}"
-                            name="{{ field.html_name }}" class="form-control"
-                            maxlength="{% if 'username' in field.label_tag %}150{% endif %}"
-                            id="{{ field.id_for_label }}" required />
-                    </div>
-                    {% if field.errors %} {% for error in field.errors %}
-                    <p style="font-size: 13px;">
-                        {{ error|escape }}
-                    </p>
-                    {% endfor %} {% endif %} {% endfor %}
-                    <button type="submit" class="btn btn-primary mt-2">Register</button>
-                </form>
-            </div>
-        </div>
-    </div>
+        {% if field.errors %} 
+            {% for error in field.errors %}
+                <p style="font-size: 13px; color: red;">{{ error|escape }}</p>
+            {% endfor %} 
+        {% endif %} 
+        {% endfor %}
+        <button type="submit">Register</button>
+    </form>
 </section>
 {% endblock %}

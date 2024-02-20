@@ -109,6 +109,9 @@ def chapter_detail(request, course_id, chapter_id):
     chapter = get_object_or_404(Chapter, id=chapter_id)
     return render(request, "chapters.html", {"chapter": chapter})
 
+@login_required
+def profile(request):
+    return render(request, 'profile.html')
 
 def register(request):
     if request.method == "POST":

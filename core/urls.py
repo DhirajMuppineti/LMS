@@ -36,4 +36,5 @@ urlpatterns = [
         name="chapter_detail",
     ),
     path("teacher_courses/", teacher_courses, name="teacher_courses"),
+    path('profile/', profile, name='profile'),
 ]

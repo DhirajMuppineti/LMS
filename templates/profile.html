@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<head>
+    <title>Profile</title>
+    <style>
+        body{
+            height: 100%;
+            width: 100%;
+        }
+        .profile{
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-top: 150px;
+        }
+        .pdet{
+            border-radius: 15px;
+            width: max-content;
+            height: 80%;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
+            border: 2px solid #9b9b9b;
+            background-color: #2a2a2a;
+            margin-left: 48px;
+        }
+        .pdet .img {
+            border-radius: 15px;
+            width: 217px;
+            height: 256px;
+            overflow: hidden;
+        }
+        .pdet .img img{
+            height: 100%;
+            width: 100%;
+            object-fit: fill;
+        }
+        .cont{
+            display: flex;
+            flex-direction: column;
+            justify-content:space-evenly;
+            border-radius: 15px;
+            height: 80%;
+            width: 100%;
+            padding: 30px;
+            border: 2px solid #9b9b9b;
+            background-color: #2a2a2a;
+        }
+        .margin{
+            margin-right: 48px;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile">
+        <div class="pdet margin">
+            <h2>Personal Details</h2>
+            <div class="img"><img src="{{ request.user.profile.profile_pic.url }}" alt="Profile Image"></div>
+            <p>Birth Date : {{ request.user.profile.birth_date }}</p>
+            <h1>{{ request.user.username }}</h1>
+        </div>
+        <div class="cont margin">
+            <h1>Welcome, {{ request.user.profile.name }}</h1>
+            <h2>Your Bio : {{ request.user.profile.bio }}</h2>
+        </div>
+    </div>
+</body>
+{% endblock %}
