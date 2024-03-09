@@ -11,6 +11,17 @@
     {% for chapter in chapters %}
         <a href="{% url 'chapter_detail' course.id chapter.id %}">{{ chapter.title }}</a>
     {% endfor %}
+    {% for lesson in lessons %}
+    <li><a href="{% url 'watch_lesson' course.id lesson.id %}">
+            <div>
+                {{lesson.title}}
+                {% if lesson.thumbnail %}
+                <img src="{{ lesson.thumbnail.url }}" alt="{{ lesson.title }} Thumbnail"
+                    style="max-width: 100px; max-height: 100px;">
+                {% endif %}
+            </div>
+        </a></li>
+    {% endfor %}
 </ul>
 
 {% endblock content %}

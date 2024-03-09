@@ -45,11 +45,37 @@ def create_chapter(request, course_id):
 
 
 @login_required
+def add_lesson(request, course_id):
+    course = get_object_or_404(Course, id=course_id)
+
+    if request.method == "POST":
+        form = LessonForm(request.POST, request.FILES)
+        if form.is_valid():
+            lesson = form.save(commit=False)
+            lesson.course = course
+            lesson.save()
+            return redirect("chapter_list", course_id=course.id)
+    else:
+        form = LessonForm()
+
+    return render(request, "add_lesson.html", {"form": form, "course": course})
+
+
+@login_required
+def watch_lesson(request, course_id, lesson_id):
+    course = get_object_or_404(Course, id=course_id)
+    lesson = get_object_or_404(Lesson, id=lesson_id, course=course)
+
+    return render(request, "watch_lesson.html", {"course": course, "lesson": lesson})
+
+
+@login_required
 def chapter_list(request, course_id):
     course = get_object_or_404(Course, id=course_id)
     chapters = Chapter.objects.filter(course=course)
+    lessons = Lesson.objects.filter(course=course)
     return render(
-        request, "chapter_list.html", {"course": course, "chapters": chapters}
+        request, "chapter_list.html", {"course": course, "chapters": chapters, "lessons":lessons}
     )
 
 
@@ -84,10 +110,11 @@ def home(request):
 def course_detail(request, course_id):
     course = Course.objects.get(id=course_id)
     chapters = Chapter.objects.filter(course=course)
+    lessons = Lesson.objects.filter(course=course)
     return render(
         request,
         "course.html",
-        {"course": course, "chapters": chapters},
+        {"course": course, "chapters": chapters, "lessons":lessons},
     )
 
 

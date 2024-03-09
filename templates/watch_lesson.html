@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<head>
+    <link rel="stylesheet" href="../../static/css/degreechap.css">
+</head>
+
+<h1>{{ lesson.title }}</h1>
+
+{% if lesson.video_file %}
+<video width="640" height="360" controls>
+    <source src="{{ lesson.video_file.url }}" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+{% else %}
+<p>No video available for this lesson.</p>
+{% endif %}
+
+<a href="{% url 'course_detail' course.id %}">Back to Course</a>
+
+{% endblock content %}

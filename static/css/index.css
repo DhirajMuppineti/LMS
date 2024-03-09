@@ -10,12 +10,13 @@
 }
 
 .content .course .inc{
+    width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 20px;
 }
 
 .content .course .cont{

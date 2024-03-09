@@ -9,22 +9,17 @@ urlpatterns = [
         edit_chapter,
         name="edit_chapter",
     ),
-    
     path("teacher_courses/", teacher_courses, name="teacher_courses"),
     path(
         "course/<int:course_id>/create_chapter/", create_chapter, name="create_chapter"
     ),
-    
-    
     path("create_course/", create_course, name="create_course"),
     path("", home),
-
     path(
         "course/<int:course_id>/chapter/<int:chapter_id>/edit/",
         edit_chapter,
         name="edit_chapter",
     ),
-    
     path("login/", auth_views.LoginView.as_view(), name="login"),
     path("logout/", auth_views.LogoutView.as_view(), name="logout"),
     path("home/", home, name="home"),
@@ -36,5 +31,11 @@ urlpatterns = [
         name="chapter_detail",
     ),
     path("teacher_courses/", teacher_courses, name="teacher_courses"),
-    path('profile/', profile, name='profile'),
+    path("profile/", profile, name="profile"),
+    path("course/<int:course_id>/add_lesson/", add_lesson, name="add_lesson"),
+    path(
+        "course/<int:course_id>/lesson/<int:lesson_id>/",
+        watch_lesson,
+        name="watch_lesson",
+    ),
 ]
